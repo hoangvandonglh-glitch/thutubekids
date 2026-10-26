@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://thutubekids.com';
+  const baseUrl = 'https://thetubekids.com';
 
   return {
     rules: [

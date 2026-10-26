@@ -4,17 +4,17 @@ import './globals.css';
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION || 'google9018ad2318338bf8';
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-CFB5MEL4DM';
 const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID || 'ca-pub-1471689577428401';
-const SITE_URL = 'https://thutubekids.com';
+const SITE_URL = 'https://thetubekids.com';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Thutubekids.com — Safe & Fun Educational Videos for Children',
-    template: '%s | Thutubekids.com',
+    default: 'Thetubekids.com — Safe & Fun Educational Videos for Children',
+    template: '%s | Thetubekids.com',
   },
-  description: 'Watch curated, safe and educational videos for kids on Thutubekids.com. Nursery rhymes, cartoons, learning, stories and more! 100% child-friendly content screened for families.',
+  description: 'Watch curated, safe and educational videos for kids on Thetubekids.com. Nursery rhymes, cartoons, learning, stories and more! 100% child-friendly content screened for families.',
   keywords: [
-    'thutubekids',
+    'thetubekids',
     'safe videos for kids',
     'children videos',
     'nursery rhymes',
@@ -24,9 +24,9 @@ export const metadata = {
     'safe youtube kids alternative',
     'preschool learning'
   ],
-  authors: [{ name: 'Thutubekids Editorial Team', url: SITE_URL }],
-  creator: 'Thutubekids',
-  publisher: 'Thutubekids',
+  authors: [{ name: 'Thetubekids Editorial Team', url: SITE_URL }],
+  creator: 'Thetubekids',
+  publisher: 'Thetubekids',
   alternates: {
     canonical: SITE_URL,
   },
@@ -53,27 +53,27 @@ export const metadata = {
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Thutubekids.com — Safe & Fun Videos for Children',
+    title: 'Thetubekids.com — Safe & Fun Videos for Children',
     description: 'Curated, safe and educational videos for kids of all ages. 100% ad-screened and family-friendly.',
     url: SITE_URL,
-    siteName: 'Thutubekids.com',
+    siteName: 'Thetubekids.com',
     type: 'website',
     images: [
       {
         url: '/icon.png',
         width: 512,
         height: 512,
-        alt: 'Thutubekids.com — Safe Kids Videos',
+        alt: 'Thetubekids.com — Safe Kids Videos',
       },
     ],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Thutubekids.com — Safe & Fun Videos for Children',
+    title: 'Thetubekids.com — Safe & Fun Videos for Children',
     description: 'Curated, safe and educational videos for toddlers, preschoolers and young learners.',
     images: ['/icon.png'],
-    creator: '@thutubekids',
+    creator: '@thetubekids',
   },
 };
 
@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
         '@type': 'WebSite',
         '@id': `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: 'Thutubekids.com',
+        name: 'Thetubekids.com',
         description: 'Safe & Curated Educational Kids Videos Platform',
         potentialAction: {
           '@type': 'SearchAction',
@@ -100,7 +100,7 @@ export default function RootLayout({ children }) {
       {
         '@type': 'Organization',
         '@id': `${SITE_URL}/#organization`,
-        name: 'Thutubekids',
+        name: 'Thetubekids',
         url: SITE_URL,
         logo: {
           '@type': 'ImageObject',

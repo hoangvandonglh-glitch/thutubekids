@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'About Us — Safe Kids Video Platform',
-  description: 'Learn about Thutubekids.com, our mission to provide children with 100% safe, educational, ad-screened video content.',
+  description: 'Learn about thetubekids.com, our mission to provide children with 100% safe, educational, ad-screened video content.',
   alternates: {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Thutubekids.com — Safe Kids Video Platform',
+    title: 'About thetubekids.com — Safe Kids Video Platform',
     description: 'Learn about our mission to provide children with safe, educational, ad-screened videos.',
     url: '/about',
   },
@@ -24,9 +24,9 @@ export default function AboutPage() {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" />
+            <img src="/icon.png" alt="thetubekids.com Logo" className="logo-img" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 thetubekids.com</span>
               <span className="logo-subtitle">Safe Videos for Kids</span>
             </div>
           </Link>
@@ -42,10 +42,10 @@ export default function AboutPage() {
       <main className="info-container">
         <div className="info-card">
           <div className="info-hero">
-            <span className="info-hero-badge">🌟 Welcome to Thutubekids.com</span>
+            <span className="info-hero-badge">🌟 Welcome to thetubekids.com</span>
             <h1 className="info-title">Where Learning Meets Safe Fun!</h1>
             <p className="info-subtitle">
-              Thutubekids.com was created with a single, heartfelt mission: to give toddlers, preschoolers, and young children a joyful digital haven free from algorithmic rabbit holes, adult interruptions, and inappropriate advertising.
+              thetubekids.com was created with a single, heartfelt mission: to give toddlers, preschoolers, and young children a joyful digital haven free from algorithmic rabbit holes, adult interruptions, and inappropriate advertising.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="info-box-icon">🛡️</div>
               <h2 className="info-box-title">Why Parents Trust Us</h2>
               <p className="info-box-desc">
-                Unlike open video platforms where autoplay can steer little eyes into unpredictable content, Thutubekids.com maintains strict boundaries. No comments sections, no external ad trackers, and 100% kid-verified channels only.
+                Unlike open video platforms where autoplay can steer little eyes into unpredictable content, thetubekids.com maintains strict boundaries. No comments sections, no external ad trackers, and 100% kid-verified channels only.
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function AboutPage() {
         <div className="footer-inner">
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. All rights reserved. Made with ❤️ for little ones everywhere.
+              © 2024 thetubekids.com. All rights reserved. Made with ❤️ for little ones everywhere.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>

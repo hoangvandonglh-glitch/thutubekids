@@ -34,9 +34,9 @@ export default function AdminSyncPage() {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" />
+            <img src="/icon.png" alt="thetubekids.com Logo" className="logo-img" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 thetubekids.com</span>
               <span className="logo-subtitle">Automated Video Sync Control</span>
             </div>
           </Link>
@@ -202,7 +202,7 @@ export default function AdminSyncPage() {
         <div className="footer-inner">
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. Automated sync management.
+              © 2024 thetubekids.com. Automated sync management.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>

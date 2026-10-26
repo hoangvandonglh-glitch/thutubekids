@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Safety Policy — Child Safety & COPPA Compliance',
-  description: 'Read the Thutubekids.com Safety Policy. Learn about our human review process, COPPA compliance, and how we protect children online.',
+  description: 'Read the thetubekids.com Safety Policy. Learn about our human review process, COPPA compliance, and how we protect children online.',
   alternates: {
     canonical: '/safety',
   },
   openGraph: {
-    title: 'Child Safety Policy | Thutubekids.com',
+    title: 'Child Safety Policy | thetubekids.com',
     description: 'Human-reviewed video selection, COPPA compliance, and family digital safety standards.',
     url: '/safety',
   },
@@ -24,9 +24,9 @@ export default function SafetyPage() {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" />
+            <img src="/icon.png" alt="thetubekids.com Logo" className="logo-img" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 thetubekids.com</span>
               <span className="logo-subtitle">Safe Videos for Kids</span>
             </div>
           </Link>
@@ -47,7 +47,7 @@ export default function SafetyPage() {
             </span>
             <h1 className="info-title">Our Child Safety Commitment</h1>
             <p className="info-subtitle">
-              At Thutubekids.com, keeping your children secure, calm, and respected is not just an afterthought — it is the foundation of every line of code we write and every video we publish.
+              At thetubekids.com, keeping your children secure, calm, and respected is not just an afterthought — it is the foundation of every line of code we write and every video we publish.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function SafetyPage() {
               <div className="safety-point-text">
                 <h3>100% Human Review &amp; Channel Vetting</h3>
                 <p>
-                  We never rely solely on automated algorithms. Every video featured on Thutubekids.com is manually previewed by our content review team. We ensure that animations, sounds, and messaging are constructive, gentle, and age-appropriate.
+                  We never rely solely on automated algorithms. Every video featured on thetubekids.com is manually previewed by our content review team. We ensure that animations, sounds, and messaging are constructive, gentle, and age-appropriate.
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function SafetyPage() {
               <div className="safety-point-text">
                 <h3>No Public Comments &amp; Zero Social Interactions</h3>
                 <p>
-                  Open comment sections on the web are notorious for spam, bullying, and predatory links. On Thutubekids.com, there are no public comment sections, direct messaging, or user chat features. Children cannot be contacted by strangers.
+                  Open comment sections on the web are notorious for spam, bullying, and predatory links. On thetubekids.com, there are no public comment sections, direct messaging, or user chat features. Children cannot be contacted by strangers.
                 </p>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function SafetyPage() {
         <div className="footer-inner">
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. Safe &amp; verified digital space for children.
+              © 2024 thetubekids.com. Safe &amp; verified digital space for children.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>

@@ -1,7 +1,7 @@
 import { getAllVideos } from '@/data/videos';
 
 export default async function sitemap() {
-  const baseUrl = 'https://thutubekids.com';
+  const baseUrl = 'https://thetubekids.com';
   const videos = getAllVideos();
 
   // Core static pages

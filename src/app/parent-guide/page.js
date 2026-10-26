@@ -7,7 +7,7 @@ export const metadata = {
     canonical: '/parent-guide',
   },
   openGraph: {
-    title: 'Parent Guide to Healthy Screen Time | Thutubekids.com',
+    title: 'Parent Guide to Healthy Screen Time | thetubekids.com',
     description: 'Practical tips and expert guidelines for raising happy, digitally balanced children.',
     url: '/parent-guide',
   },
@@ -24,9 +24,9 @@ export default function ParentGuidePage() {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" />
+            <img src="/icon.png" alt="thetubekids.com Logo" className="logo-img" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 thetubekids.com</span>
               <span className="logo-subtitle">Safe Videos for Kids</span>
             </div>
           </Link>
@@ -116,7 +116,7 @@ export default function ParentGuidePage() {
         <div className="footer-inner">
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. Empowering mindful parenting.
+              © 2024 thetubekids.com. Empowering mindful parenting.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>

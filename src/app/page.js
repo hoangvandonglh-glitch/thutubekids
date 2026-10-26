@@ -15,9 +15,9 @@ function Header({ searchQuery, onSearch }) {
     <header className="header">
       <div className="header-inner">
         <Link href="/" className="logo-area">
-          <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" width="48" height="48" />
+          <img src="/icon.png" alt="Thetubekids.com Logo" className="logo-img" width="48" height="48" />
           <div className="logo-text">
-            <h1 className="logo-title">🌈 Thutubekids.com</h1>
+            <h1 className="logo-title">🌈 Thetubekids.com</h1>
             <span className="logo-subtitle">Safe Videos for Kids</span>
           </div>
         </Link>
@@ -190,7 +190,7 @@ function Footer({ onSelectCategory }) {
       <div className="footer-inner">
         <div className="footer-top">
           <div>
-            <div className="footer-brand-title">🌈 Thutubekids.com</div>
+            <div className="footer-brand-title">🌈 Thetubekids.com</div>
             <p className="footer-brand-desc">
               A safe and joyful video platform designed especially for children.
               Every video is hand-picked, human-reviewed, and verified for child-appropriate content.
@@ -232,7 +232,7 @@ function Footer({ onSelectCategory }) {
 
         <div className="footer-bottom">
           <span className="footer-copy">
-            © 2024 Thutubekids.com. Made with ❤️ for little ones everywhere.
+            © 2024 Thetubekids.com. Made with ❤️ for little ones everywhere.
           </span>
           <div className="footer-safe-label">
             <span>🛡️</span>

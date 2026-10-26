@@ -27,9 +27,9 @@ export default function ContactPage() {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" />
+            <img src="/icon.png" alt="thetubekids.com Logo" className="logo-img" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 thetubekids.com</span>
               <span className="logo-subtitle">Safe Videos for Kids</span>
             </div>
           </Link>
@@ -48,7 +48,7 @@ export default function ContactPage() {
             <span className="info-hero-badge" style={{ background: '#EDE9FE', color: '#5B21B6' }}>
               📬 We’d Love to Hear From You
             </span>
-            <h1 className="info-title">Contact Thutubekids.com</h1>
+            <h1 className="info-title">Contact thetubekids.com</h1>
             <p className="info-subtitle">
               Whether you are a parent with feedback, a creator wanting to suggest wholesome content, or have a question about child safety, our team is always here to assist.
             </p>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 <span className="contact-item-icon">📧</span>
                 <div>
                   <div className="contact-item-label">Direct Email</div>
-                  <div className="contact-item-val">support@thutubekids.com</div>
+                  <div className="contact-item-val">support@thetubekids.com</div>
                 </div>
               </div>
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 <span className="contact-item-icon">🛡️</span>
                 <div>
                   <div className="contact-item-label">Content Review &amp; Safety</div>
-                  <div className="contact-item-val">safety@thutubekids.com</div>
+                  <div className="contact-item-val">safety@thetubekids.com</div>
                 </div>
               </div>
 
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 <div className="form-success-box">
                   <div className="success-icon">🎉</div>
                   <h3>Thank You for Reaching Out!</h3>
-                  <p>Your message has been received by the Thutubekids.com team. We will get back to you shortly at {formData.email}.</p>
+                  <p>Your message has been received by the thetubekids.com team. We will get back to you shortly at {formData.email}.</p>
                   <button onClick={() => setSubmitted(false)} className="form-reset-btn">
                     Send Another Message
                   </button>
@@ -171,7 +171,7 @@ export default function ContactPage() {
         <div className="footer-inner">
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. All rights reserved.
+              © 2024 thetubekids.com. All rights reserved.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>

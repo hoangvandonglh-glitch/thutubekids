@@ -27,9 +27,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const video = getVideoBySlug(slug);
-  if (!video) return { title: 'Video Not Found — Thutubekids.com' };
+  if (!video) return { title: 'Video Not Found — Thetubekids.com' };
 
-  const siteUrl = 'https://thutubekids.com';
+  const siteUrl = 'https://thetubekids.com';
   const pageUrl = `${siteUrl}/video/${video.slug}`;
 
   return {
@@ -39,10 +39,10 @@ export async function generateMetadata({ params }) {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${video.title} — Safe Kids Video | Thutubekids`,
+      title: `${video.title} — Safe Kids Video | Thetubekids`,
       description: video.description,
       url: pageUrl,
-      siteName: 'Thutubekids.com',
+      siteName: 'Thetubekids.com',
       type: 'video.other',
       images: [
         {
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${video.title} — Watch Safe on Thutubekids`,
+      title: `${video.title} — Watch Safe on Thetubekids`,
       description: video.description,
       images: [video.thumbnail],
     },
@@ -76,7 +76,7 @@ export default async function VideoPage({ params }) {
 
   if (!video) notFound();
 
-  const siteUrl = 'https://thutubekids.com';
+  const siteUrl = 'https://thetubekids.com';
   const pageUrl = `${siteUrl}/video/${video.slug}`;
 
   const categoryObj = categories.find((c) => c.id === video.category);
@@ -106,7 +106,7 @@ export default async function VideoPage({ params }) {
     contentUrl: pageUrl,
     publisher: {
       '@type': 'Organization',
-      name: 'Thutubekids',
+      name: 'Thetubekids',
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/icon.png`,
@@ -162,9 +162,9 @@ export default async function VideoPage({ params }) {
       <header className="header">
         <div className="header-inner">
           <Link href="/" className="logo-area">
-            <img src="/icon.png" alt="Thutubekids.com Logo" className="logo-img" width="48" height="48" />
+            <img src="/icon.png" alt="Thetubekids.com Logo" className="logo-img" width="48" height="48" />
             <div className="logo-text">
-              <span className="logo-title">🌈 Thutubekids.com</span>
+              <span className="logo-title">🌈 Thetubekids.com</span>
               <span className="logo-subtitle">Safe Videos for Kids</span>
             </div>
           </Link>
@@ -378,7 +378,7 @@ export default async function VideoPage({ params }) {
         <div className="footer-inner">
           <div className="footer-top">
             <div>
-              <div className="footer-brand-title">🌈 Thutubekids.com</div>
+              <div className="footer-brand-title">🌈 Thetubekids.com</div>
               <p className="footer-brand-desc">
                 A safe and joyful video platform designed especially for children.
                 Every video is hand-picked and reviewed for child-appropriate content.
@@ -398,7 +398,7 @@ export default async function VideoPage({ params }) {
           <hr className="footer-divider" />
           <div className="footer-bottom">
             <span className="footer-copy">
-              © 2024 Thutubekids.com. Safe, ad-screened, curated educational videos for children.
+              © 2024 Thetubekids.com. Safe, ad-screened, curated educational videos for children.
             </span>
             <div className="footer-safe-label">
               <span>🛡️</span>
