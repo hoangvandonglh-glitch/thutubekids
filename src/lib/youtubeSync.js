@@ -23,6 +23,26 @@ export const MONITORED_CHANNELS = [
     channelId: 'UCe1VpF4wS_kdcjyTRSXBcnQ',
     defaultCategory: 'learning',
   },
+  {
+    name: 'ChuChu TV Nursery Rhymes',
+    channelId: 'UCBnZ16ahKA2DZ_T5W0FPUXg',
+    defaultCategory: 'nursery-rhymes',
+  },
+  {
+    name: 'Dave and Ava - Nursery Rhymes',
+    channelId: 'UC3xdYJcb7ny8Weoo53vS9LA',
+    defaultCategory: 'nursery-rhymes',
+  },
+  {
+    name: 'Bounce Patrol - Kids Songs',
+    channelId: 'UCAcq6oZXEN9KObS3a1ZDdPw',
+    defaultCategory: 'music',
+  },
+  {
+    name: 'Blippi - Educational Videos for Kids',
+    channelId: 'UCx3RchaoRFpDpB60x7xRREw',
+    defaultCategory: 'learning',
+  },
 ];
 
 // Helper to make HTTPS GET request
