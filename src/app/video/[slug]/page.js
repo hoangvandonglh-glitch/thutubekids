@@ -131,7 +131,7 @@ export default async function VideoPage({ params }) {
         '@type': 'ListItem',
         position: 2,
         name: categoryLabel,
-        item: `${siteUrl}/?category=${video.category}`,
+        item: `${siteUrl}/category/${video.category}`,
       },
       {
         '@type': 'ListItem',
@@ -181,7 +181,7 @@ export default async function VideoPage({ params }) {
         <div className="breadcrumb-inner">
           <Link href="/" className="breadcrumb-link">🏠 Home</Link>
           <span className="breadcrumb-sep">›</span>
-          <Link href={`/?category=${video.category}`} className="breadcrumb-link">{categoryLabel}</Link>
+          <Link href={`/category/${video.category}`} className="breadcrumb-link">{categoryLabel}</Link>
           <span className="breadcrumb-sep">›</span>
           <span className="breadcrumb-current">{video.title}</span>
         </div>
@@ -245,9 +245,6 @@ export default async function VideoPage({ params }) {
               </div>
             </section>
 
-            {/* Vị trí quảng cáo 2: Trong bài viết (In-Article Banner) */}
-            <AdBanner format="banner" style={{ margin: '20px 0' }} />
-
             {/* 2. What Kids Learn (Nội dung giáo dục) */}
             {video.learningPoints && video.learningPoints.length > 0 && (
               <section className="video-article-section learning-section">
@@ -292,6 +289,9 @@ export default async function VideoPage({ params }) {
                     <h3 className="parent-tips-title">Parent Corner &amp; Activities</h3>
                   </div>
                   <p className="parent-tips-text">{video.parentTips}</p>
+                  <div style={{ marginTop: '12px', paddingTop: '10px', borderTop: '1px dashed #FCD34D', fontSize: '0.85rem', color: '#92400E' }}>
+                    💡 Want tips on healthy screen time? Read our <Link href="/parent-guide" style={{ fontWeight: 700, color: '#B45309' }}>Parent Guide</Link> or learn about our <Link href="/safety" style={{ fontWeight: 700, color: '#B45309' }}>Child Safety Standards</Link>.
+                  </div>
                 </div>
               </section>
             )}
@@ -300,7 +300,7 @@ export default async function VideoPage({ params }) {
             <div className="video-footer-meta">
               <div className="video-page-category-box">
                 <span className="cat-label">📂 Category:</span>
-                <Link href={`/?category=${video.category}`} className="cat-chip">
+                <Link href={`/category/${video.category}`} className="cat-chip">
                   {categoryLabel}
                 </Link>
               </div>
@@ -362,9 +362,9 @@ export default async function VideoPage({ params }) {
           <div className="sidebar-cta-box">
             <div className="sidebar-cta-icon">🌈</div>
             <h3 className="sidebar-cta-title">Looking for more?</h3>
-            <p className="sidebar-cta-desc">Explore all curated safe videos for toddlers &amp; kids.</p>
-            <Link href="/" className="sidebar-cta-btn">
-              Browse All Categories
+            <p className="sidebar-cta-desc">Explore more curated safe videos in {categoryLabel}.</p>
+            <Link href={`/category/${video.category}`} className="sidebar-cta-btn">
+              Explore More {categoryLabel}
             </Link>
           </div>
         </aside>

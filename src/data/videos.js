@@ -992,3 +992,80 @@ export function getVideoBySlug(slug) {
   return all.find((v) => v.slug === slug || v.id === slug);
 }
 
+export const categoryDetails = {
+  'nursery-rhymes': {
+    id: 'nursery-rhymes',
+    label: '🎵 Nursery Rhymes',
+    title: 'Safe Nursery Rhymes & Songs for Toddlers',
+    description: 'Watch the best classic nursery rhymes, toddler songs, and baby lullabies in a 100% child-safe, ad-screened environment. Sing along with Baby Shark, Wheels on the Bus, and more!',
+    seoHeading: '🎵 Safe Nursery Rhymes & Toddler Songs',
+    introText: 'Sing along to timeless nursery rhymes and baby songs that foster language acquisition, rhythm, and joyful early childhood memories. Handpicked and certified child-friendly.',
+    keywords: ['nursery rhymes for kids', 'baby songs lyrics', 'toddler rhymes', 'preschool sing along songs', 'cocomelon rhymes safe']
+  },
+  'animals': {
+    id: 'animals',
+    label: '🦁 Animals',
+    title: 'Animal Learning Videos & Wildlife for Kids',
+    description: 'Explore the fascinating animal kingdom! Learn farm animals, jungle wildlife, zoo sounds, and marine creatures with educational, safe videos for kids.',
+    seoHeading: '🦁 Animal Discovery & Wildlife for Kids',
+    introText: 'Introduce little explorers to animal sounds, habitats, and gentle wildlife facts. Inspire curiosity about nature, pets, and ocean life in a safe space.',
+    keywords: ['animal videos for toddlers', 'zoo animal sounds for kids', 'wildlife learning for preschool', 'farm animal songs for children']
+  },
+  'learning': {
+    id: 'learning',
+    label: '📚 Learn & Grow',
+    title: 'Educational Learning Videos for Toddlers & Preschoolers',
+    description: 'Educational videos for kids: ABC phonics, numbers, colors, shapes, and early preschool concepts in a safe, gentle, ad-screened environment.',
+    seoHeading: '📚 Educational & Early Learning Videos for Kids',
+    introText: 'Boost your child\'s cognitive development with fun and gentle educational lessons. From counting numbers to alphabet phonics and colors, every video is screened for positive screen time.',
+    keywords: ['educational videos for toddlers', 'preschool learning videos', 'alphabet phonics for kids', 'counting songs for kindergarten']
+  },
+  'stories': {
+    id: 'stories',
+    label: '📖 Stories',
+    title: 'Calming Bedtime Stories & Moral Tales for Children',
+    description: 'Calming bedtime stories, moral fairy tales, and illustrated audiobooks for children. Perfect for relaxing evening routines, imagination, and peaceful sleep.',
+    seoHeading: '📖 Calming Bedtime Stories & Moral Tales for Kids',
+    introText: 'Nurture imagination, empathy, and listening skills with our soothing storybook readings. Ideal for winding down before bedtime or quiet afternoon rest periods.',
+    keywords: ['bedtime stories for toddlers', 'moral stories for kids videos', 'audio picture books for children', 'bedtime sleep stories for kids']
+  },
+  'cartoons': {
+    id: 'cartoons',
+    label: '🎨 Cartoons',
+    title: 'Safe & Gentle Cartoons for Children',
+    description: 'Wholesome, non-violent animated cartoons for toddlers and children. Screened for positive life lessons, friendship, and gentle storytelling.',
+    seoHeading: '🎨 Wholesome & Safe Cartoons for Children',
+    introText: 'Delightful and gentle cartoon adventures featuring friendly animal characters, everyday problem solving, and social-emotional growth with zero overstimulation.',
+    keywords: ['safe cartoons for kids', 'gentle cartoons for toddlers', 'wholesome animation for children', 'non-violent kid cartoons']
+  },
+  'science': {
+    id: 'science',
+    label: '🔬 Science',
+    title: 'Easy Science & Space Discovery for Kids',
+    description: 'Easy science experiments, solar system planets, weather, and nature exploration designed for young curious minds in a child-safe environment.',
+    seoHeading: '🔬 Easy Science & Curiosity Videos for Kids',
+    introText: 'Spark curiosity with age-appropriate science videos explaining how the world works: planets, rainbows, dinosaurs, and simple nature exploration.',
+    keywords: ['easy science for kids', 'space and planets for children', 'simple experiments for kindergarten', 'stem videos for toddlers']
+  },
+  'music': {
+    id: 'music',
+    label: '🎶 Music & Dance',
+    title: 'Kids Dance Songs & Active Movement Videos',
+    description: 'Energizing music, dance-along songs, and gross motor skill exercises for toddlers and preschoolers. Fun physical movement and freeze dance games.',
+    seoHeading: '🎶 Music, Dance Along & Active Movement for Kids',
+    introText: 'Get little bodies moving with rhythm, coordination exercises, and upbeat songs! Promotes gross motor skills, physical health, and energetic indoor fun.',
+    keywords: ['kids dance along songs', 'freeze dance song for preschool', 'gross motor skills dance for toddlers', 'action songs for children']
+  }
+};
+
+export function getCategoryBySlug(slug) {
+  return categoryDetails[slug] || categories.find((c) => c.id === slug) || null;
+}
+
+export function getVideosByCategory(categorySlug) {
+  const all = getAllVideos();
+  if (categorySlug === 'all') return all;
+  return all.filter((v) => v.category === categorySlug);
+}
+
+

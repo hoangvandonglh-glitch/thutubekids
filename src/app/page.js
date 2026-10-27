@@ -67,17 +67,50 @@ function Categories({ activeCategory, onSelect }) {
 }
 
 // =====================
-// FEATURED SECTION
+// FEATURED SECTION (Phương án 3: Kết hợp Mới nhất + Xoay vòng)
 // =====================
-function FeaturedSection() {
-  const main = featuredVideos[0];
-  const sides = featuredVideos.slice(1, 3);
+function FeaturedSection({ videos = [] }) {
+  const { main, sides } = useMemo(() => {
+    const list = Array.isArray(videos) && videos.length > 0 ? videos : featuredVideos;
+    if (!list || list.length === 0) {
+      return { main: null, sides: [] };
+    }
+
+    // 1. Ô to bên trái: Luôn là video MỚI NHẤT
+    const mainVideo = list[0];
+
+    // 2. Hai ô nhỏ bên phải: Xoay vòng từ kho video còn lại
+    const remaining = list.slice(1);
+    if (remaining.length === 0) {
+      return { main: mainVideo, sides: [] };
+    }
+
+    // Xoay vòng theo ngày (mỗi ngày một bộ đôi khác nhau)
+    const today = new Date();
+    const daySeed = today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
+
+    const idx1 = daySeed % remaining.length;
+    let idx2 = (daySeed + 7) % remaining.length;
+    if (idx1 === idx2 && remaining.length > 1) {
+      idx2 = (idx1 + 1) % remaining.length;
+    }
+
+    const side1 = remaining[idx1];
+    const side2 = remaining.length > 1 ? remaining[idx2] : remaining[0];
+
+    return {
+      main: mainVideo,
+      sides: [side1, side2].filter(Boolean),
+    };
+  }, [videos]);
+
+  if (!main) return null;
 
   return (
     <section className="featured-section">
       <h2 className="section-title">🔥 Featured Videos</h2>
       <div className="featured-grid">
-        {/* Main featured */}
+        {/* Main featured - Video mới nhất */}
         <Link
           className="featured-main"
           href={`/video/${main.slug}`}
@@ -90,20 +123,20 @@ function FeaturedSection() {
             loading="eager"
           />
           <div className="featured-overlay">
-            <div className="featured-badge">🔥 {main.badge}</div>
+            <div className="featured-badge">🔥 {main.badge || 'Latest Video'}</div>
             <h3 className="featured-title">{main.title}</h3>
             <div className="featured-meta">
               <span>📺 {main.channel}</span>
               <span>•</span>
-              <span>👁️ {main.views}</span>
+              <span>👁️ {main.views || '1M+'}</span>
               <span>•</span>
-              <span>⏱️ {main.duration}</span>
+              <span>⏱️ {main.duration || 'Fun'}</span>
             </div>
           </div>
           <div className="play-btn-big" aria-hidden="true">▶️</div>
         </Link>
 
-        {/* Side featured */}
+        {/* Side featured - Xoay vòng tự động theo ngày */}
         {sides.map((v) => (
           <Link
             key={v.slug}
@@ -118,12 +151,12 @@ function FeaturedSection() {
               loading="eager"
             />
             <div className="featured-overlay">
-              <div className="featured-badge">{v.badge}</div>
+              <div className="featured-badge">{v.badge || '⭐ Featured'}</div>
               <h3 className="featured-title" style={{ fontSize: '0.95rem' }}>{v.title}</h3>
               <div className="featured-meta" style={{ fontSize: '0.72rem' }}>
-                <span>👁️ {v.views}</span>
+                <span>👁️ {v.views || '1M+'}</span>
                 <span>•</span>
-                <span>⏱️ {v.duration}</span>
+                <span>⏱️ {v.duration || 'Fun'}</span>
               </div>
             </div>
             <div className="play-btn-big" style={{ width: '50px', height: '50px', fontSize: '1.3rem' }} aria-hidden="true">▶️</div>
@@ -207,12 +240,13 @@ function Footer({ onSelectCategory }) {
           <div>
             <div className="footer-col-title">📂 Categories</div>
             <ul className="footer-links">
-              <li><button onClick={() => onSelectCategory('nursery-rhymes')} className="footer-link-btn">🎵 Nursery Rhymes</button></li>
-              <li><button onClick={() => onSelectCategory('animals')} className="footer-link-btn">🦁 Animals</button></li>
-              <li><button onClick={() => onSelectCategory('learning')} className="footer-link-btn">📚 Learning</button></li>
-              <li><button onClick={() => onSelectCategory('stories')} className="footer-link-btn">📖 Stories</button></li>
-              <li><button onClick={() => onSelectCategory('cartoons')} className="footer-link-btn">🎨 Cartoons</button></li>
-              <li><button onClick={() => onSelectCategory('science')} className="footer-link-btn">🔬 Science</button></li>
+              <li><Link href="/category/nursery-rhymes" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>🎵 Nursery Rhymes</Link></li>
+              <li><Link href="/category/learning" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>📚 Learn &amp; Grow</Link></li>
+              <li><Link href="/category/animals" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>🦁 Animals</Link></li>
+              <li><Link href="/category/stories" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>📖 Stories</Link></li>
+              <li><Link href="/category/cartoons" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>🎨 Cartoons</Link></li>
+              <li><Link href="/category/science" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>🔬 Science</Link></li>
+              <li><Link href="/category/music" className="footer-link-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>🎶 Music &amp; Dance</Link></li>
             </ul>
           </div>
 
@@ -328,7 +362,7 @@ export default function HomePage() {
       <Categories activeCategory={activeCategory} onSelect={handleCategorySelect} />
 
       {/* Featured - show only on homepage without search and category = all */}
-      {!searchQuery && activeCategory === 'all' && currentPage === 1 && <FeaturedSection />}
+      {!searchQuery && activeCategory === 'all' && currentPage === 1 && <FeaturedSection videos={videosList} />}
 
       {/* Google AdSense Unit (Top Banner) */}
       <AdBanner />

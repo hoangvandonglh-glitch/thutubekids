@@ -1,4 +1,4 @@
-import { getAllVideos } from '@/data/videos';
+import { getAllVideos, categoryDetails } from '@/data/videos';
 
 export default async function sitemap() {
   const baseUrl = 'https://thetubekids.com';
@@ -44,6 +44,14 @@ export default async function sitemap() {
     },
   ];
 
+  // Category Pillar Hub pages (High SEO Priority)
+  const categoryPages = Object.keys(categoryDetails).map((slug) => ({
+    url: `${baseUrl}/category/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 0.9,
+  }));
+
   // Dynamic video pages
   const videoPages = videos.map((v) => ({
     url: `${baseUrl}/video/${v.slug}`,
@@ -52,5 +60,5 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...videoPages];
+  return [...staticPages, ...categoryPages, ...videoPages];
 }
