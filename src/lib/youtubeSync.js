@@ -258,6 +258,7 @@ export async function syncLatestVideos() {
           parentTips: meta.parentTips,
           tags: meta.tags,
           syncedAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
         };
 
         newlyAdded.push(newVideoObject);

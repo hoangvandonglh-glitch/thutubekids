@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { videos as staticVideos } from '@/data/videos';
+import { videos as staticVideos, sortVideosByNewest } from '@/data/videos';
 
 // Determine the path for dynamic videos
 const LOCAL_DYNAMIC_PATH = path.join(process.cwd(), 'src', 'data', 'dynamic-videos.json');
@@ -48,10 +48,15 @@ export function getDynamicVideos() {
 
 export function getAllVideos() {
   const dynamic = getDynamicVideos();
-  // Merge static videos and dynamic videos without duplicates (by youtubeId or slug)
-  const existingIds = new Set(staticVideos.map((v) => v.youtubeId));
-  const newVideos = dynamic.filter((v) => !existingIds.has(v.youtubeId));
-  return [...staticVideos, ...newVideos];
+  // Dynamic videos override any matching static videos
+  const dynamicMap = new Map();
+  dynamic.forEach((v) => {
+    if (v.youtubeId) dynamicMap.set(v.youtubeId, v);
+  });
+
+  const remainingStatic = staticVideos.filter((v) => !dynamicMap.has(v.youtubeId));
+  const combined = [...dynamic, ...remainingStatic];
+  return sortVideosByNewest(combined);
 }
 
 export function getVideoBySlug(slug) {
@@ -62,15 +67,28 @@ export function getVideoBySlug(slug) {
 export function saveDynamicVideos(newVideos) {
   try {
     const current = getDynamicVideos();
-    const existingIds = new Set([
-      ...staticVideos.map((v) => v.youtubeId),
-      ...current.map((v) => v.youtubeId),
-    ]);
+    const map = new Map();
 
-    const toAdd = newVideos.filter((v) => !existingIds.has(v.youtubeId));
-    if (toAdd.length === 0) return current;
+    // Index existing dynamic videos
+    for (const v of current) {
+      if (v.youtubeId) map.set(v.youtubeId, v);
+    }
 
-    const updated = [...current, ...toAdd];
+    // Upsert new or updated videos
+    const now = new Date().toISOString();
+    for (const v of newVideos) {
+      if (v.youtubeId) {
+        const existing = map.get(v.youtubeId) || {};
+        map.set(v.youtubeId, {
+          ...existing,
+          ...v,
+          syncedAt: v.syncedAt || existing.syncedAt || now,
+          updatedAt: v.updatedAt || now,
+        });
+      }
+    }
+
+    const updated = sortVideosByNewest(Array.from(map.values()));
     inMemoryDynamic = updated;
 
     const filePath = getDynamicFilePath();
@@ -78,7 +96,8 @@ export function saveDynamicVideos(newVideos) {
     return updated;
   } catch (err) {
     console.error('Error saving dynamic videos:', err);
-    inMemoryDynamic = [...inMemoryDynamic, ...newVideos];
+    inMemoryDynamic = sortVideosByNewest([...newVideos, ...inMemoryDynamic]);
     return inMemoryDynamic;
   }
 }
+

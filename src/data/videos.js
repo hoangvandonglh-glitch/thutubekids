@@ -1,3 +1,5 @@
+import dynamicVideosJson from './dynamic-videos.json';
+
 // Curated safe kids videos from YouTube
 // All videos are pre-verified via YouTube oEmbed to guarantee 100% embeddable & active thumbnails
 
@@ -928,24 +930,65 @@ export const videos = [
 
 export const featuredVideos = videos.slice(0, 4);
 
+export function getVideoTimestamp(video) {
+  if (!video) return 0;
+  if (video.updatedAt) {
+    const t = new Date(video.updatedAt).getTime();
+    if (!isNaN(t)) return t;
+  }
+  if (video.syncedAt) {
+    const t = new Date(video.syncedAt).getTime();
+    if (!isNaN(t)) return t;
+  }
+  if (video.publishedAt) {
+    const t = new Date(video.publishedAt).getTime();
+    if (!isNaN(t)) return t;
+  }
+  if (video.createdAt) {
+    const t = new Date(video.createdAt).getTime();
+    if (!isNaN(t)) return t;
+  }
+  if (typeof video.id === 'string' && video.id.startsWith('dyn_')) {
+    const parts = video.id.split('_');
+    const num = Number(parts[1]);
+    if (!isNaN(num) && num > 0) return num;
+  }
+  return 0;
+}
+
+export function sortVideosByNewest(list) {
+  if (!Array.isArray(list)) return [];
+  return [...list].sort((a, b) => {
+    const timeA = getVideoTimestamp(a);
+    const timeB = getVideoTimestamp(b);
+    if (timeA !== timeB) {
+      return timeB - timeA;
+    }
+    return 0;
+  });
+}
+
 export function getDynamicVideos() {
-  try {
-    const dynamic = require('./dynamic-videos.json');
-    if (Array.isArray(dynamic)) return dynamic;
-  } catch (e) {
-    // fallback if file doesn't exist
+  if (Array.isArray(dynamicVideosJson)) {
+    return dynamicVideosJson;
   }
   return [];
 }
 
 export function getAllVideos() {
   const dyn = getDynamicVideos();
-  const existingIds = new Set(videos.map((v) => v.youtubeId));
-  const newOnes = dyn.filter((v) => !existingIds.has(v.youtubeId));
-  return [...videos, ...newOnes];
+  const dynamicMap = new Map();
+  dyn.forEach((v) => {
+    if (v.youtubeId) dynamicMap.set(v.youtubeId, v);
+  });
+
+  const remainingStatic = videos.filter((v) => !dynamicMap.has(v.youtubeId));
+  const combined = [...dyn, ...remainingStatic];
+  return sortVideosByNewest(combined);
 }
 
 export function getVideoBySlug(slug) {
   const all = getAllVideos();
   return all.find((v) => v.slug === slug || v.id === slug);
 }
+

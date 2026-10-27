@@ -100,7 +100,7 @@ export default async function VideoPage({ params }) {
     name: video.title,
     description: video.description,
     thumbnailUrl: [video.thumbnail],
-    uploadDate: '2024-01-01T08:00:00Z',
+    uploadDate: video.updatedAt || video.syncedAt || '2024-01-01T08:00:00Z',
     duration: formatDurationISO(video.duration),
     embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
     contentUrl: pageUrl,

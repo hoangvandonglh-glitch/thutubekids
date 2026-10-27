@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback, Fragment } from 'react';
+import { useState, useMemo, useCallback, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { getAllVideos, categories, featuredVideos } from '@/data/videos';
 import AdBanner from '@/components/AdBanner';
@@ -251,9 +251,22 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [videosList, setVideosList] = useState(() => getAllVideos());
+
+  // Dynamically fetch latest videos to ensure newly synced or updated videos appear immediately
+  useEffect(() => {
+    fetch('/api/videos')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setVideosList(data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const filteredVideos = useMemo(() => {
-    let result = getAllVideos();
+    let result = videosList;
 
     if (activeCategory !== 'all') {
       result = result.filter((v) => v.category === activeCategory);
@@ -270,7 +283,7 @@ export default function HomePage() {
     }
 
     return result;
-  }, [activeCategory, searchQuery]);
+  }, [videosList, activeCategory, searchQuery]);
 
   // Reset to page 1 whenever category or search query changes
   const handleCategorySelect = useCallback((cat) => {
