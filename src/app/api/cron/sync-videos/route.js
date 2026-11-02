@@ -10,11 +10,9 @@ export async function GET(request) {
     const cronSecret = process.env.CRON_SECRET;
     const authHeader = request.headers.get('authorization');
 
-    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-      // In development, allow testing without auth if needed
-      if (process.env.NODE_ENV === 'production') {
-        return NextResponse.json({ error: 'Unauthorized cron request' }, { status: 401 });
-      }
+    // In production the secret is mandatory; in development allow testing without auth
+    if (process.env.NODE_ENV === 'production' && (!cronSecret || authHeader !== `Bearer ${cronSecret}`)) {
+      return NextResponse.json({ error: 'Unauthorized cron request' }, { status: 401 });
     }
 
     console.log('[CRON] Starting Vercel Cron video sync...');

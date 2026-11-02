@@ -69,7 +69,7 @@ export default function ParentGuidePage() {
               <p className="age-rec">Recommended: Up to 1 hour daily</p>
               <ul className="age-tips">
                 <li>Choose songs that model hygiene and morning habits (e.g. Brush Your Teeth, Clean Up)</li>
-                <li>Pause and ask predictive questions: "What animal do you think comes next?"</li>
+                <li>Pause and ask predictive questions: &quot;What animal do you think comes next?&quot;</li>
                 <li>Connect concepts to real life: count 5 real apples after watching counting videos</li>
               </ul>
             </div>
@@ -92,7 +92,7 @@ export default function ParentGuidePage() {
               <div className="pillar-item">
                 <span className="pillar-icon">🗣️</span>
                 <h3>Talk About What You See</h3>
-                <p>Narrate actions, label emotions ("Look, the little monkey feels sad!"), and expand their vocabulary organically.</p>
+                <p>Narrate actions, label emotions (&quot;Look, the little monkey feels sad!&quot;), and expand their vocabulary organically.</p>
               </div>
 
               <div className="pillar-item">
@@ -104,7 +104,7 @@ export default function ParentGuidePage() {
               <div className="pillar-item">
                 <span className="pillar-icon">⏰</span>
                 <h3>Set Clear Gentle Boundaries</h3>
-                <p>Use visual countdown timers: "We are going to watch 2 songs, then it's time for lunch!" Children thrive on predictable transitions.</p>
+                <p>Use visual countdown timers: &quot;We are going to watch 2 songs, then it&apos;s time for lunch!&quot; Children thrive on predictable transitions.</p>
               </div>
             </div>
           </div>

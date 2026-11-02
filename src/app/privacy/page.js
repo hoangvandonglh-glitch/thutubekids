@@ -47,7 +47,7 @@ export default function PrivacyPage() {
             </span>
             <h1 className="info-title">Privacy Policy</h1>
             <p className="info-subtitle">
-              Last updated: October 2026. Your child's privacy is our top priority. At thetubekids.com, we design our platform to collect the minimum data necessary to serve you high-quality videos safely.
+              Last updated: October 2026. Your child&apos;s privacy is our top priority. At thetubekids.com, we design our platform to collect the minimum data necessary to serve you high-quality videos safely.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
             <section className="privacy-section">
               <h2>3. Embedded YouTube Player</h2>
               <p>
-                Videos on thetubekids.com are streamed via YouTube’s official embedded player API in strict mode (<code style={{ background: '#F3F4F6', padding: '2px 6px', borderRadius: '4px' }}>youtube.com/embed/</code>). When viewing videos, YouTube/Google may collect technical data according to Google's Privacy Policy. We configure our player parameters to suppress personalized advertising and related third-party suggestions wherever supported.
+                Videos on thetubekids.com are streamed via YouTube’s official embedded player API in strict mode (<code style={{ background: '#F3F4F6', padding: '2px 6px', borderRadius: '4px' }}>youtube.com/embed/</code>). When viewing videos, YouTube/Google may collect technical data according to Google&apos;s Privacy Policy. We configure our player parameters to suppress personalized advertising and related third-party suggestions wherever supported.
               </p>
             </section>
 

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { videos as staticVideos, sortVideosByNewest } from '@/data/videos';
+import { videos as staticVideos, sortVideosByNewest, getDynamicVideos as getBundledDynamic } from '@/data/videos';
 
 // Determine the path for dynamic videos
 const LOCAL_DYNAMIC_PATH = path.join(process.cwd(), 'src', 'data', 'dynamic-videos.json');
@@ -14,12 +14,8 @@ function getDynamicFilePath() {
   if (process.env.VERCEL) {
     if (!fs.existsSync(SERVERLESS_DYNAMIC_PATH)) {
       try {
-        if (fs.existsSync(LOCAL_DYNAMIC_PATH)) {
-          const content = fs.readFileSync(LOCAL_DYNAMIC_PATH, 'utf-8');
-          fs.writeFileSync(SERVERLESS_DYNAMIC_PATH, content, 'utf-8');
-        } else {
-          fs.writeFileSync(SERVERLESS_DYNAMIC_PATH, '[]', 'utf-8');
-        }
+        // src/data is not shipped to the lambda, so seed from the JSON bundled at build time
+        fs.writeFileSync(SERVERLESS_DYNAMIC_PATH, JSON.stringify(getBundledDynamic()), 'utf-8');
       } catch (e) {
         console.warn('Could not initialize /tmp file, using memory only', e);
       }

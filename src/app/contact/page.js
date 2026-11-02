@@ -85,7 +85,7 @@ export default function ContactPage() {
               <div className="faq-mini-box">
                 <h3>💡 Frequently Asked Questions</h3>
                 <p><strong>Are you open to creator suggestions?</strong><br />Yes! We review safe educational channels weekly.</p>
-                <p style={{ marginTop: '10px' }}><strong>How do I report an issue?</strong><br />Select "Report a Video" in the message subject.</p>
+                <p style={{ marginTop: '10px' }}><strong>How do I report an issue?</strong><br />Select &quot;Report a Video&quot; in the message subject.</p>
               </div>
             </div>
 

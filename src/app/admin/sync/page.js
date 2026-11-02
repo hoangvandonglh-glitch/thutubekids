@@ -14,8 +14,10 @@ export default function AdminSyncPage() {
     setResult(null);
 
     try {
+      const secret = window.prompt('Enter CRON_SECRET (leave empty in local dev):') || '';
       const res = await fetch('/api/cron/sync-videos', {
         method: 'POST',
+        headers: secret ? { Authorization: `Bearer ${secret}` } : {},
       });
       const data = await res.json();
       if (!res.ok) {

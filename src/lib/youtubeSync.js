@@ -1,5 +1,6 @@
 import https from 'https';
 import { getAllVideos, saveDynamicVideos } from './videoStore';
+import { isGithubPersistEnabled, persistVideosToGithub } from './githubPersist';
 
 // Curated verified safe kids channels for automatic sync
 export const MONITORED_CHANNELS = [
@@ -264,7 +265,7 @@ export async function syncLatestVideos() {
         newlyAdded.push(newVideoObject);
         logMessages.push(`[ADDED] ${newVideoObject.title} (/video/${newVideoObject.slug})`);
 
-        // Limit to maximum 3 new videos per channel per sync run to prevent flooding
+        // Limit to maximum 2 new videos per channel per sync run to prevent flooding
         if (newlyAdded.filter((v) => v.channel === ch.name).length >= 2) {
           break;
         }
@@ -278,6 +279,16 @@ export async function syncLatestVideos() {
   if (newlyAdded.length > 0) {
     saveDynamicVideos(newlyAdded);
     logMessages.push(`Successfully saved ${newlyAdded.length} new videos to store.`);
+    if (isGithubPersistEnabled()) {
+      try {
+        await persistVideosToGithub(newlyAdded);
+        logMessages.push('Committed to GitHub; Vercel will redeploy with the new videos.');
+      } catch (err) {
+        logMessages.push(`[WARN] GitHub persist failed: ${err.message}`);
+      }
+    } else {
+      logMessages.push('[WARN] GITHUB_TOKEN/GITHUB_REPO not set: new videos are NOT permanent and will be lost.');
+    }
   } else {
     logMessages.push(`No new embeddable videos found. Store is up to date.`);
   }
